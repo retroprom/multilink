@@ -1,0 +1,264 @@
+.TH MULTILINK 1 "November 2001" "Version 0.3 (beta)" "Palm hacking commands"
+.SH NAME
+multilink \- Palm multi segment linker, version 0.3.
+.SH SYNOPSIS
+.B multilink
+.BI [ option | filename ] ...
+.SH DESCRIPTION
+.B Multilink
+is a command line tool that can create multiple code segment
+applications and shared library files for the Palm Computing
+Platform. Multilink takes as input object files or libraries generated
+using gcc for PalmOS, as output multilink generates resource files
+corresponding to the application or shared library code, data, and
+relocation segments. As such multilink replaces the normal
+gcc-as-linker and obj-res steps in the build process. In addition,
+multilink generates the linker output files for each segment (the .out files),
+these files are required for debugging with gdb and may be used with binutils
+tools like nm.
+.PP
+NOTE: The
+.B multilink
+command you use probably comes in the form of the
+.B m68k-palmos-coff-multilink
+command (for use with the older prc-tools 0.5 tool chain), or
+.B m68k-palmos-multilink
+command (for use with the newer prc-tools 2.0 tool chain). For simplicity,
+this man page uses the simplified
+.B multilink
+name to refer to both forms of the command.
+.SH OPTIONS
+The
+.I filename
+arguments may be any combination of object file or archive file names, or
+archive files specified using the
+.BR -Ldir ,
+.B -lname
+syntax. In addition
+.B -stdlib
+specifies that the standard libraries ( -lc and -lgcc ) should be included.
+.P
+The
+.I option
+arguments may be intermixed with
+.I filename
+arguments, but in some cases,
+.I option
+arguments only effect the
+.I filename arguments that follow. The following describes the options that
+normally will be used:
+.TP
+.BI \-basename\  name
+Specify the basename for output files. The basename is used in
+generating the output coff files
+.I (basenameNNNN.out)
+needed for debugging and the output
+grc files
+.I (TYPEXXXX.basename.grc)
+ used to build your prc database.
+.TP
+.BI \-fid\  fid
+FtrID jmptables will be installed using this ID. Without getting into
+too much detail, multilink stores it's inter-segment jump tables using
+a call to FtrSet(). This option specifies the creator ID passed as the
+first argument to this call. Normally this option should match the
+create ID of your application, and normally you should specify this
+option.
+.TP
+.BI \-gdb-script\  filename
+Generate script with useful gdb commands. Out of the box, gdb does not
+know how to debug applications created using multilink. This option will
+generate a script with a useful 'load-segments' command tailored to your
+application.
+.TP
+.BI \-g
+use debug versions of startup files.
+.TP
+.BI \-help
+Print the standard usage information.
+.TP
+.BI \-segmentmap\  file
+Explicitly define segments. Normally multilink automatically allocates
+objects to segments using a simple
+.I keep
+.I adding
+.I until
+.I the
+.I segment
+.I is
+.I full
+algorithm. Using a segmentmap file you may explicitly specify
+segments and which objects should go in each. The syntax of the
+segmentmap file is simple: objects are specified one per line, and a
+new segment is specified using the
+.IB ' <segment> '
+keyword. If the end of the segmentmap file is encountered before all
+objects have been specified, remaining objects will allocated according
+to the automatic algorithm.
+.TP
+.BI \-l name
+Use the library named
+.I name
+when linking.
+
+Multilink searches a standard list of directories
+for the library, which is  actually  a  file  named
+.RI 'lib name .a'.
+The linker then uses this file as
+if it had been specified precisely by name.
+The directories searched include  several  standard
+system  directories  plus any that you specify with
+.BR -L .
+.TP
+.BI \-L dir
+Add  directory dir to the list of directories to be searched for
+.BR \-l .
+.TP
+.BI \-segmentsize\  n [ k ]\ 
+Define maximum segment size (default is 30k). This option defines the
+maximum size of each segment. The theoretical maximum is currently 32k
+(16 bit relative addressing), but a fudge factor is usually
+needed. When using the a4-globals based tool chain
+(m68-palmos-coff-gcc) a smaller segment size is recommended as the
+fudge factor needs to be big enough to include the larger runtime
+support (27k seems to work well). If your links are failing with
+obscure error messages about the size of a branch, try a smaller
+segment size. Sorry, this is a bit lame. 
+.TP
+.BI \-stdlib
+link standard libs (-lc and -lgcc) into target.
+.TP
+.BI \-nostdlib
+do not link standard libs into target
+.TP
+.BI \-syslib
+Tell multilink target will be a System Library (default is target will
+be an app). This options changes the startup files that are linked
+into the target, changes the expected entry point from PilotMain to
+ShlibMain, and changes the resource type of that code segment from
+code0001 to libr0000.
+.TP
+.BI \-verbose
+Be more verbose. There are multiple levels of verbosity.
+.TP
+.BI \-version
+Print the version number.
+.PP
+The following options are somewhat esoteric and are not normally needed:
+.TP
+.BI \-debug
+Output random debugging noise. This is mainly used for debugging multilink,
+but may be useful in overcoming sleeplessness.
+.TP
+.BI \-leavetmp
+Leave generated glue files around. In the normal process of building
+your program, multilink generates a number of temporary assembler,
+and object files. Normally these are removed after use. This option
+disables the normal cleanup.
+.TP
+.BI \-libdir\  dir
+Directory to look for startup files. The multilink command uses a number
+of Palm code files to handle things at runtime. This option specifies
+where to find those files. Normally, the default location is correct and this
+option is not needed.
+.TP
+.BI \-stdlib\  path
+Path to look for standard library files (libgcc.a and libc.a).
+.I Path
+is a colon separated list of directories that multilink will look for
+the standard libraries (if they are being used). Normally, the default
+path is correct and this option is not needed.
+.TP
+.B \-unused
+Dump unused symbols. Useful in finding code that could be left out of
+your application.
+.TP
+.BI \-use-compiler\  compiler
+Specify compiler to use. Multilink calls this command to compile assembler (.s) files and to link object (.o) files. Normally, the default
+path is correct and this option is not needed.
+.I Path
+is a colon separated list of directories that multilink will look for
+the standard libraries (if they are being used). Normally, the default
+path is correct and this option is not needed.
+.TP
+.B \-a4-globals
+Generate runtime code using a4-rel globals. Stay away.
+.TP
+.B \-a5-globals
+Generate runtime code using a5-rel globals. Stay away.
+.TP
+.B \-relocation-old
+Assume gcc 2.7 relocation information. Stay away.
+.TP
+.B \-relocation-new
+Assume gcc 2.95 relocation information. Stay away.
+.SH ENVIRONMENT VARIABLES
+.TP
+.B MULTILINK_LIBDIR
+If specified, this variable specifies the directory multilink will look for the
+Palm runtime files, just like the
+.B \-libdir
+option. The
+.B \-libdir
+option overrides this variable.
+.TP
+.B MULTILINK_STDLIBPATH
+If specified, this variable specifies the path multilink will look for the
+standard library files (libc.a and libgcc.a), just like the
+.B \-stdlibpath
+option. The
+.B \-stdlibpath
+option overrides this variable.
+.SH EXAMPLES
+The following example links all the objects in the current directory into a
+target application:
+.PP
+.B multilink -basename myapp -fid MYAP -g -stdlib *.o
+.PP
+The application code has access to the standard libraries (-stdlib),
+is debuggable using gdb (-g), will have a creator ID of 'MYAP' (-fid)
+and the multilink output files will use 'myapp' in their name.
+.PP
+The following example demonstrates links object in the current
+directory with some libraries:
+.PP
+.B multilink ... *.o libmath.a -L../ui -lui -lgcc
+.PP
+The following example shows how the -gdb-script option could be used:
+.PP
+.B $ m68k-palmos-multilink ... -gdb-script script.gdb *.o
+.br
+.B $ par | build-prc |
+.I some tool for building the prc
+.br
+.B $ m68k-palmos-gdb myapp0000.out
+.br
+.B (gdb) source script.gdb
+.br
+.B (gdb) target pilot localhost:2000
+.br
+.B (gdb) load-segments
+.PP
+The following example shows how multilink could be used with pilrc and par:
+.PP
+.B rm -f *.bin *.grc
+.br
+.B pilrc resources.rcp
+.br
+.B m68k-palmos-multilink -fid MYAP *.o
+.br
+.B par r myapp.prc MyApp appl MYAP *.bin *.grc
+.PP
+The following example shows how multilink could be used with pilrc and
+build-prc:
+.PP
+.B rm -f *.bin *.grc
+.br
+.B pilrc resources.rcp
+.br
+.B m68k-palmos-multilink -fid MYAP *.o
+.br
+.B build-prc myapp.prc MyApp MYAP *.bin *.grc
+.SH AUTHOR
+.B multilink
+was written by David Williams, djw@djw.org.
