@@ -1,0 +1,900 @@
+From: <Saved by Blink>
+Snapshot-Content-Location: http://www.djw.org/product/palm/multilink/#download
+Subject: Multilink
+Date: Fri, 6 Jan 2023 18:05:55 -0000
+MIME-Version: 1.0
+Content-Type: multipart/related;
+	type="text/html";
+	boundary="----MultipartBoundary--qNWa7l0KGWYOFd05dDbGJOLC6tAiNIueIfdfhizon6----"
+
+
+------MultipartBoundary--qNWa7l0KGWYOFd05dDbGJOLC6tAiNIueIfdfhizon6----
+Content-Type: text/html
+Content-ID: <frame-5BFCF24C94289AE3C02AECFB4372D3A3@mhtml.blink>
+Content-Transfer-Encoding: quoted-printable
+Content-Location: http://www.djw.org/product/palm/multilink/#download
+
+<html data-darkreader-mode=3D"dynamic" data-darkreader-scheme=3D"dark"><hea=
+d><meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3Dwindows=
+-1252"><link rel=3D"stylesheet" type=3D"text/css" href=3D"cid:css-79cf9783-=
+066e-45e3-853b-e963742b8d9f@mhtml.blink" /><link rel=3D"stylesheet" type=3D=
+"text/css" href=3D"cid:css-1f9fd297-dc02-4709-8099-ee544067a3ad@mhtml.blink=
+" /><link rel=3D"stylesheet" type=3D"text/css" href=3D"cid:css-b9e2927a-fda=
+a-483a-9fe5-f153478d7092@mhtml.blink" /><link rel=3D"stylesheet" type=3D"te=
+xt/css" href=3D"cid:css-c5e44d75-9430-4e99-998e-eb37edef2b27@mhtml.blink" /=
+><link rel=3D"stylesheet" type=3D"text/css" href=3D"cid:css-e8b55419-c2f8-4=
+21f-a2d7-d57e36e02d99@mhtml.blink" /><link rel=3D"stylesheet" type=3D"text/=
+css" href=3D"cid:css-a9b51fb7-ac63-4858-aa74-767296eb907c@mhtml.blink" /><l=
+ink rel=3D"stylesheet" type=3D"text/css" href=3D"cid:css-e6eb0413-2d82-4972=
+-b585-8a207c14aaac@mhtml.blink" /><link rel=3D"stylesheet" type=3D"text/css=
+" href=3D"cid:css-ae009d80-e18d-40b9-8082-0777bb1394ab@mhtml.blink" />
+   =20
+    <meta name=3D"Author" content=3D"David Williams">
+    <meta name=3D"GENERATOR" content=3D"djw@djw.org">
+    <title>Multilink</title>
+  <meta name=3D"darkreader" content=3D"709fa150033dacad24373a70f9a2f5b2"></=
+head>
+  <body text=3D"#000000" bgcolor=3D"#FFFFFF" link=3D"#0000EE" vlink=3D"#551=
+A8B" alink=3D"#FF0000" data-darkreader-inline-bgcolor=3D"" style=3D"--darkr=
+eader-inline-bgcolor:#181a1b;">
+    <h2><a name=3D"index" data-ss1673028281=3D"1"></a>Multilink</h2>
+    <ul>
+      <li><a href=3D"http://www.djw.org/product/palm/multilink/#introductio=
+n" data-ss1673028281=3D"1">Introduction</a></li>
+      <li><a href=3D"http://www.djw.org/product/palm/multilink/#versionHist=
+ory" data-ss1673028281=3D"1">Version History</a></li>
+      <li><a href=3D"http://www.djw.org/product/palm/multilink/#manPage" da=
+ta-ss1673028281=3D"1">Man Page</a></li>
+      <li><a href=3D"http://www.djw.org/product/palm/multilink/#howFunction=
+CallWorks" data-ss1673028281=3D"1">
+	  How an Multilink generated Inter-segment Function Call Works
+	</a>
+      </li>
+      <li><a href=3D"http://www.djw.org/product/palm/multilink/#howMultilin=
+kWorks" data-ss1673028281=3D"1">How Multilink Works</a></li>
+      <li><a href=3D"http://www.djw.org/product/palm/multilink/#building" d=
+ata-ss1673028281=3D"1">Building and Porting Multilink</a></li>
+      <li><a href=3D"http://www.djw.org/product/palm/multilink/#limits" dat=
+a-ss1673028281=3D"1">Limitations and Wish list</a></li>
+      <li><a href=3D"http://www.djw.org/product/palm/multilink/#faq" data-s=
+s1673028281=3D"1">FAQ</a></li>
+      <li><a href=3D"http://www.djw.org/product/palm/multilink/#download" d=
+ata-ss1673028281=3D"1">Download</a></li>
+      <li><a href=3D"http://www.djw.org/product/palm/multilink/#donation" d=
+ata-ss1673028281=3D"1">Donation</a></li>
+      <li><a href=3D"http://www.djw.org/product/palm/multilink/#libbfd" dat=
+a-ss1673028281=3D"1">Libbfd</a></li>
+      <li><a href=3D"http://www.djw.org/product/palm/multilink/#thanks" dat=
+a-ss1673028281=3D"1">Thanks</a></li>
+    </ul>
+    <h2><a name=3D"introduction" data-ss1673028281=3D"1"></a>Introduction</=
+h2>
+    <p>
+      Multilink is a command line tool that can create multiple code
+      segment applications and shared library files for
+      <a href=3D"http://www.palmos.com/" rel=3D"noreferrer" data-ss16730282=
+81=3D"1">PalmOS</a>.
+      Multilink takes as input object files generated using gcc for
+      PalmOS, as output multilink generates
+      resource files corresponding to the application or shared
+      library code, data, and relocation segments. As such multilink
+      replaces the normal gcc-as-linker and obj-res steps in the build
+      process.
+    </p>
+    <h2><a name=3D"versionHistory" data-ss1673028281=3D"1"></a>Version Hist=
+ory</h2>
+    <p>
+      The latest version is <b>0.3</b>, if you have an earlier
+      version, please update to the latest. You can check the version,
+      with the <i>-version</i> option. Note: in version 0.3, the name
+      of the command has changed, so you can keep your old <i>multilink</i>
+      command and also install the newer <i>m68k-palmos-multilink</i> or
+      <i>m68k-palmos-coff-multilink</i>.
+    </p>
+    <p>
+      <b>0.3</b> is a major update to earlier versions of multilink.
+      A lot of the main executable has been rewritten to work with the
+      newer prc-tools 2.X version of gcc, a number of bugs have been
+      fixed, a number of new features have been added, and (hopefully)
+      multilink should be easier to use now.
+    </p>
+    <h3>Version 0.3 (November 2001)</h3>
+    <ul>
+      <li>
+	Added support for gcc 2.95, and prc-tools 2.X.
+	Support for gcc 2.7, and prc-tools 0.5 is still supported.
+	The Makefile can be configured to to build for either tool
+	chain.
+      </li>
+      <li>
+	The command name has changed from <b>multilink</b> to
+	<b>m68k-palmos-multilink</b> (for the 2.X tool chain)=20
+	or <b>m68k-palmos-coff-multilink</b> (for the 0.5 tool chain).
+      </li>
+      <li>
+	The runtime library code has been updated to build against the
+	PalmOS 3.5 or later header files, and use the new PalmOS 3.5 types.
+	Building against the older header files is still supported via
+	build options. See the Makefile.
+      </li>
+      <li>
+	Minor changes to ease building multilink under Cygwin (for Windows).
+      </li>
+      <li>
+	Fixed runtime problems related to sysAppLaunchFlagSubCall and
+	other than sysAppLaunchCmdNormalLaunch launch codes.
+      </li>
+      <li>
+	Added a new option <i>-gdb-script</i> that makes it easier to
+	debug all segments in multilink built application.
+      </li>
+      <li>
+	Added support for libraries on the command line: lib<i>foo</i>.a
+	or -l<i>foo</i>.
+      </li>
+      <li>
+	Simplified using the system libraries.
+      </li>
+      <li>
+	Added a <a href=3D"http://www.djw.org/product/palm/multilink/multilink.htm=
+l" data-ss1673028281=3D"1">man page</a>.
+      </li>
+      <li>
+	Various bug fixes, and performance improvements.
+      </li>
+    </ul>
+    <h3>Version 0.2.8 (May 2000)</h3>
+    <ul>
+      <li>
+	Fixed a nasty performance bug in the glue code. This is a free
+	speedup!
+      </li>
+      <li>
+	Increased the limit on the number of object files per segment
+	to 256.
+      </li>
+      <li>
+	Other minor bug fixes.
+      </li>
+    </ul>
+    <h3>Version 0.2.5 (February 2000)</h3>
+    <ul>
+      <li>
+	A number of bug fixes: global data handled correctly (was
+	sometimes treated as code), fixed crasher on object larger
+	than segment size.
+      </li>
+      <li>
+	-<i>verbose -verbose </i>now passes <i>-v </i>to gcc.
+      </li>
+      <li>
+	Major bug fix dealing with incorrectly handled global data.
+      </li>
+      <li>
+	Fixed a5 handling in shared libraries (was being set to a4).
+      </li>
+      <li>
+	Disabled the workaround for PalmOS 3.3Beta in shared library
+	loader. PalmOS 3.3 Final fixes the problem.
+      </li>
+    </ul>
+    <a name=3D"manPage" data-ss1673028281=3D"1"></a>
+    <h2>Man Page</h2>
+    <p>
+      <a href=3D"http://www.djw.org/product/palm/multilink/multilink.html" =
+data-ss1673028281=3D"1">Here</a> is a HTML version of the
+      <a href=3D"http://www.djw.org/product/palm/multilink/multilink.html" =
+data-ss1673028281=3D"1"><b>multilink(1)</b></a> man page, converted using
+      <a href=3D"http://polyglotman.sourceforge.net/" rel=3D"noreferrer" da=
+ta-ss1673028281=3D"1">rman</a>.
+    </p>
+    <a name=3D"howFunctionCallWorks" data-ss1673028281=3D"1"></a>
+    <h2>How an Multilink generated Inter-segment Function Call Works</h2>
+    <p>
+      Before explaining how the multilink tool works, it might be
+      useful to start with what actually happens when a function from
+      one segment calls a function in another segment. To explain the
+      process, let's say that object foo.o is in segment #1 and
+      contains a call to bar(). bar() is (naturally) in bar.o, and
+      bar.o is in segment #2. How does foo.o get at bar()? It's all
+      about surrogates and export tables.
+    </p>
+    <p>
+      Each segment has an export table which is basically a table of
+      all the functions in the segment which are called from another
+      segment. The table is actually a simple vector of 16 bit offsets
+      from the start of the code segment to the entry point of the
+      exported functions.
+    </p>
+    <p>
+      Ok, so we have an export table in segment #2 that somewhere in
+      it has an entry for bar(). How does foo.o get at that? This is
+      where surrogates come in. Multilink generates a function called
+      bar() and adds this to code segment #1. This means that segment
+      #1 is fully resolved and can be successfully linked. What the
+      segment #1 bar() (the surrogate for the real bar()) does is to
+      find the exports table in segment #2, and jump to the real bar()
+      function referenced in that exports table. When the real bar()
+      returns, processing will continue with the code in segment #1
+      that called the surrogate bar(). To make it easy for the
+      surrogate bar() to "find the exports table in segment #2", a
+      global table of all segment export tables is allocated and
+      computed at startup time. In the usually case, the surrogate
+      bar() executes only a handful of instructions to index into the
+      global export tables table, index into the export table for
+      segment #2, compute the absolute address of the real bar() and
+      jump there. This fast path relies on storing a pointer to the
+      global export tables table in the global data (a4 relative
+      reference). If your executable is running without globals (say
+      called from find), then this doesn't work. So, in addition to
+      the reference stored in global data, a reference is stored using
+      the PalmOS FtrSet() facility.  When no globals are available, an
+      inter-segment call can still be accomplished by pulling the
+      global export tables table using FtrGet(). Note that the creator
+      ID that is used as the first argument to FtrSet() is specified
+      on the command line with <a href=3D"http://www.djw.org/product/palm/m=
+ultilink/#manPage" data-ss1673028281=3D"1">-fid</a>. You
+      don't have to make this the same as the final .prc creator ID,
+      but it should be reasonably unique. This is especially true if
+      you are running multilink created apps with multilink created
+      shared libraries. If the latter accidentally uses the global
+      export tables table of the former (or visa versa) bad things
+      will happen. Here is a (poor) diagram of the whole process:
+    </p>
+    <center>
+      <img src=3D"http://www.djw.org/product/palm/multilink/mlcall.gif" alt=
+=3D"Multilink inter-segment function call." height=3D"350" width=3D"400">
+    </center>
+    <p>
+      If this all seems familiar it should. It's very similar to the
+      way GLib shared libraries call each other. Multilink
+      inter-segment calls are a little simpler, as they don't try to
+      switch global data between segments. This is a feature(!) and
+      makes the inter-segment calling easier, but makes the linking
+      part much harder.
+    </p>
+    <a name=3D"howMultilinkWorks" data-ss1673028281=3D"1"></a>
+    <h2>How Multilink Works</h2>
+    <p>
+      There are two important components to multilink: the multilink
+      command itself, which runs on the host (development) platform,
+      and the runtime code, which is linked into the target code and
+      runs on the PalmOS device.
+    </p>
+    <p>
+      When executed, first multilink analyses all the input object
+      files, recording information about all the global symbols
+      (global functions, data, etc), unknown symbols (object foo.o
+      calls memcpy() which is unknown to foo.o), and objects. When
+      this is complete, multilink knows in which object file every
+      symbol is (or no object if the symbol is still unresolved), and
+      has created a graph of all the object to symbol dependencies.
+    </p>
+    <p>
+      Next multilink starts allocating objects to code
+      segments. Multilink has two different strategies for doing
+      this. The default is the 'simple' allocation scheme, optionally
+      the '<a href=3D"http://www.djw.org/product/palm/multilink/#manPage" d=
+ata-ss1673028281=3D"1">-segmentmap</a>' approach can be
+      taken. In the simple scheme, objects from the command line are
+      added to a segment one by one until the
+      <a href=3D"http://www.djw.org/product/palm/multilink/#manPage" data-s=
+s1673028281=3D"1">-segmentsize</a> is reached. Then a new
+      segment is created, and objects are then added to it, etc.. The
+      simple allocation scheme works fine, and will usually 'just
+      work', but as no regard to inter-object dependencies is taken,
+      this approach can sometimes result in a resulting executable
+      which makes lots of calls across segment boundaries (somewhat
+      more expensive than a local call).  Ideally, you want your
+      executable to have code segments which have a high degree of
+      locality. That is, most of the code in a code segment calls
+      other code in the same code segment. So, if you use the simple
+      scheme, the order of objects on the command line matters. For
+      the finest control over this, use the
+      '<a href=3D"http://www.djw.org/product/palm/multilink/#manPage" data-=
+ss1673028281=3D"1">-segmentmap</a>' approach to explicitly
+      control things. Personally, I think both are less than ideal,
+      and it's unlikely you'll be able to make much difference one way
+      or another. I really wish that I had the time to write a better
+      allocation algorithm that took into account inter-object
+      dependencies (either static, or runtime determined) and
+      generated the ideal segment map. Maybe someone else can work on
+      this...
+    </p>
+    <p>
+      Ok, so now all the segments have been allocated, and the
+      inter-segment wiring can commence! This is the interesting part
+      if you are into bits and bytes. The wiring consists of the
+      caller side surrogate functions and callee side export tables
+      described <a href=3D"http://www.djw.org/product/palm/multilink/#howFu=
+nctionCallWorks" data-ss1673028281=3D"1">above</a>.  Both
+      surrogates and exports are generated as assembler files. One of
+      each kind for every code segment. If you use the
+      '<a href=3D"http://www.djw.org/product/palm/multilink/#manPage" data-=
+ss1673028281=3D"1">-leavetmp</a>' option, you can examine the
+      surrogate functions and export table for segment NNNN, they will
+      be named 'sNNNN.s' and 'eNNNN.s' respectively, where NNNN is the
+      segment number.
+    </p>
+    <p>
+      The other thing that multilink must do is to merge data
+      references from all code segments into one common addressing
+      range. You want to be able to reference global data Foo from
+      code segment #1 and Foo from code segment #2 and have them be
+      the same thing, right? This turns out to be pretty tricky, as
+      multilink doesn't actually do the linking of code segments
+      itself, it calls gcc to do this, and when gcc is linking code
+      segment #5 it doesn't know about the global data used in code
+      segment #2, or visa versa, but for everything to work, all data
+      must be allocated out of a common offset range for all code
+      segments. Multilink finesses gcc (or ld I guess) to make
+      everything line up. Multilink does this by first being aware of
+      all data references in all segments, and by adding padding data
+      to the front and end of each code segment link to ensure that
+      each segment refers to the same data at the same global
+      offset. If you use the '<a href=3D"http://www.djw.org/product/palm/mu=
+ltilink/#manPage" data-ss1673028281=3D"1">-leavetmp</a>'
+      option, you can examine the padding data for all segments as
+      'data.s' (actually this is not just the padding data, this is
+      all data), and the pre- and post- padding data for segment NNNN
+      as 'dbNNNN.s' and 'deNNNN.s'.
+    </p>
+    <p>
+      Next multilink determines what kind of runtime support files
+      each segment needs. For most segments this is just a little bit
+      of code that can handle the FtrGet() way of finding the global
+      export tables table. In addition, the first code segment
+      (code0001 for apps, libr0000 for shared libraries) gets all the
+      startup code. The operating system will load the first code
+      segment and global data (at least for apps), and the first code
+      segment startup code must load the other code segments, and
+      relocate data references to them, as appropriate.
+    </p>
+    <p>
+      When the segments have been allocated, when the inter-segment
+      wiring has been generated, when the pre- and post-segment
+      padding data has been generated, and the appropriate startup
+      files have been chosen, when all is ready the segments get
+      linked. Each segment is linked individually, and gcc is called
+      to 1) assemble the .s files, and 2) to link the segment
+      together. If you use the <a href=3D"http://www.djw.org/product/palm/m=
+ultilink/#manPage" data-ss1673028281=3D"1">-verbose</a>
+      option, you can see how gcc is called. The result of each
+      segment link is fully linked code segment. If you use the
+      '<a href=3D"http://www.djw.org/product/palm/multilink/#manPage" data-=
+ss1673028281=3D"1">-leavetmp</a>' option, you can examine these
+      code segment files, they are named 'oNNNN', where NNNN is the
+      segment number.
+    </p>
+    <p>
+      After gcc has been run to link each segment, obj-res is called
+      to extract the code and data relocation information from each
+      gcc linked file. Multilink could do this work itself, but it
+      seemed a waste of time to duplicate what obj-res does very
+      well. Multilink does some renaming of the files that obj-res
+      generates to match the naming scheme described in the
+      <a href=3D"http://www.djw.org/product/palm/multilink/#manPage" data-s=
+s1673028281=3D"1">usage</a> section.
+    </p>
+    <p>
+      Finally, the data resource needs to be generated. Multilink does
+      this work itself, as the resulting data resource is the common
+      data for all segments. The data resource file is generated as
+      'data0000.basename.grc' and we're all done.
+    </p>
+    <a name=3D"building" data-ss1673028281=3D"1"></a>
+    <h2>Building and Porting Multilink</h2>
+    <p>
+      Multilink has been successful built and used on FreeBSD, Linux
+      and Solaris (though in the case of the Solaris, not in a long
+      time). It should easily port to any other Un*x variety that has
+      the prc tools package and the bfd library. Multilink has also be
+      ported to Windows using the
+      <a href=3D"http://sourceware.cygnus.com/cygwin/" rel=3D"noreferrer" d=
+ata-ss1673028281=3D"1">Cygwin</a>
+      package. Porting it to Win32/Visual C++ shouldn't be that
+      difficult, but I've not yet had the inclination to try.
+    </p>
+    <a name=3D"limits" data-ss1673028281=3D"1"></a>
+    <h2>Limitations and Wish list</h2>
+    <p>
+      A number of the items previously described in the section have
+      been addressed in <b>version 0.3</b>: library support,
+      debugger support, etc..
+    </p>
+    <h3>Global const data.</h3>
+    <p>
+      Basically global const data doesn't work. If global const data
+      is referred to in more than one segment, you're out of luck, it
+      won't link. If all the references to a particular const items,
+      and the item are in the same code segment, you're OK. There are
+      some system limitations and limitations of the multilink
+      approach that cause this. Gcc usually generates data defined as
+      const as text (code), and all references to that data using PC
+      relative addressing. This works fine when you only have one code
+      segment, as all text is in that code segment, so a PC relative
+      address will work. The scheme breaks down in multi segment
+      world, as at compile time you have no idea of the relative (or
+      absolute) address of an item in another code segment.  For
+      function calls, this is handled by the surrogate and export
+      table scheme described <a href=3D"http://www.djw.org/product/palm/mul=
+tilink/#howFunctionCallWorks" data-ss1673028281=3D"1">here</a>,
+      but for data references, there is no <i>hook</i> that multilink
+      can use to cross the inter-segment chasm. As a point of
+      reference, the MetroWerks CodeWarrior compiler gets around this
+      by using globals relative addressing for all inter segment
+      references (code or data). This has the advantage of always
+      working, but has the (I think) distinct disadvantage that it
+      generates huge global data segments, as every <i>exported</i>
+      function or data item must have an entry in the data segment,
+      with the associated relocation information. This adds up pretty
+      quick, and eats away at your most precious resource: application
+      memory. The three workarounds that I use, and suggest to others
+      are:
+    </p>
+    <ul>
+      <li>
+	Make sure const data items and their users are in the same code segment
+      </li>
+      <li>
+	Wrap a function around the const data, this will work multi-segment:
+const char Foobar[] =3D { 'a', 'b', 'c' };<br>
+const char*<br>
+FoobarGet()<br>
+{<br>
+&nbsp;&nbsp;&nbsp; return Foobar;<br>
+}<br>
+      </li>
+      <li>
+	Drop the const. This will mean the data ends up in the global
+	data segment, but if the item is small, and needs to be
+	accessed very quickly, this may be the best way to go.
+      </li>
+    </ul>
+    <h3>Gcc linker should handle multiple code segments.</h3>
+    <p>
+      This is not a multilink wish list item, but rather a wish for
+      multilink's obsolescence. Multilink is a hack to solve a
+      problem. The app that I work on, had grown too big for one code
+      segment (many times over), and a fix was needed. The right fix
+      is teach the gcc compiler and linker about multiple code
+      segments, but that sounded like taking a really long time to
+      do. I have some familiarity with linkers and hacking them from
+      previous endeavors (see
+      <a href=3D"http://cvs-mirror.mozilla.org/webtools/lxr/source/config/g=
+tscc.c" rel=3D"noreferrer" data-ss1673028281=3D"1">gtscc</a>),
+      and thought the multilink non-invasive approach to using gcc
+      could work.  It did, but it's not as good as the
+      <i>real thing</i> could be.
+    </p>
+    <p>
+      What about multi-segment support in prc-tools 2.X you ask?
+      Unfortunately, the multi-segment support in the prc-tools 2.X
+      tool chain requires you to make significant changes to your source
+      code. I found this unacceptable and so multilink has been
+      updated to work with the newer compiler. The combination
+      provides the better compilation and convenience of the new
+      compiler, plus the ease of use and low runtime memory use of
+      multilink.
+    </p>
+    <p>
+      I still think the right way to go in solving this problem is
+      a version of <i>ld</i> specifically made for PalmOS. Multilink may
+      one day grow into this or serve as a store of knowledge about
+      non-invasive PalmOS multi-segment linking.
+    </p>
+    <a name=3D"faq" data-ss1673028281=3D"1"></a>
+    <h2>FAQ</h2>
+    <ul>
+      <li>
+	<p>
+	  How does multilink compare to prc-tools 2.0's multi-segment
+	  support?
+	</p>
+	<p>
+	  Creating multi-segment applications with using only the
+	  multi-segment support now available in prc-tools 2.0
+	  requires changes to your source code. Multilink does not
+	  require changes to your source code, only to your Makefile.
+	  That's the main advantage of using multilink, but in
+	  addition: the multilink runtime model uses less memory, apps
+	  linked with multilink can always call across segment
+	  boundaries (even when there are no globals), multilink now
+	  has a viable debugging technique, other things.
+	</p>
+      </li>
+      <li>
+	<p>
+	  Problems building multilink: libbfd
+	</p>
+	<p>
+	  90% of problems related to building multilink are to do with
+	  the bfd library. Multilink uses the bfd library (as do the gnu
+	  binutils tools) to read, write and modify object files. It is
+	  critical that you are building multilink with the correct version
+	  of the bfd library. The correct version of the bfd library is NOT
+	  the version for your host machine, but the version for PalmOS
+	  object files. /usr/lib/libbfd.a is probably not what you want.
+	  /usr/local/pilot/lib/libbfd.a probably is. Your system may not
+	  have a version of the bfd library built for Palm object files,
+	  in that case you must build one. Sorry.
+	  See also: <a href=3D"http://www.djw.org/product/palm/multilink/#libbfd" =
+data-ss1673028281=3D"1">Libbfd</a>.
+	</p>
+      </li>
+      <li>
+	<p>
+	  When I link, I am getting unresolved reference error messages
+	  for strange things like: _udivsi3, _muldi3, etc.. What's up?
+	</p>
+	<p>
+	  These symbols are part of the gcc runtime library,
+	  supporting things like multiply and division of 32 bit
+	  numbers. You have probably neglected to include <i>-lgcc</i>
+	  or <i>-stdlib</i> on the command line.
+	</p>
+      </li>
+      <li>
+	<p>
+	  Are cross segment calls possible when there are no globals?
+	</p>
+	<p>
+	  Yes. The multilink runtime library loads and tracks the
+	  <a href=3D"http://www.djw.org/product/palm/multilink/#howFunctionCallWor=
+ks" data-ss1673028281=3D"1">segment tables</a> whether there
+	  are globals or not. With the older prc-tools 0.5 tool chain,
+	  there is some performance penality in this mode.
+	</p>
+      </li>
+      <li>
+	<p>
+	  What is the multilink license?
+	</p>
+	<p>
+	  <a href=3D"http://www.mozilla.org/MPL" rel=3D"noreferrer" data-ss1673028=
+281=3D"1">MPL</a>.
+	  Multilink was originally developed by me at
+	  <a href=3D"http://www.avantgo.com/" rel=3D"noreferrer" data-ss1673028281=
+=3D"1">AvantGo</a>
+	  (makers of
+	  <a href=3D"https://ami.avantgo.com/setup/index.html" rel=3D"noreferrer" =
+data-ss1673028281=3D"1">very cool software</a>
+	  for your mobile device). AvantGo has allowed me to release the
+	  source code under the MPL license.
+	</p>
+      </li>
+    </ul>
+    <a name=3D"download" data-ss1673028281=3D"1"></a>
+    <h2>Download</h2>
+    <p>
+      Multilink source is available here:
+    </p>
+    <ul>
+      <li>
+	The source (multilink.tgz) version 0.3 is
+	<a href=3D"http://www.djw.org/product/palm/multilink/multilink.tgz" data-s=
+s1673028281=3D"1">here</a>.
+      </li>
+      <li>
+	Ready to run Win32 multilink.exe + documentation (multilink-cygwin.zip) <a=
+ href=3D"http://www.djw.org/product/palm/multilink/multilink-cygwin.zip" da=
+ta-ss1673028281=3D"1">here</a>
+	<i>(updated November, 17, 2001; now works with Cygwin b20)</i>.=20
+      </li>
+    </ul>
+    <p>
+      These may be useful:
+    </p>
+    <ul>
+      <li>
+	libbfd.a (m68k-palmos binutils) for Cygwin is
+	<a href=3D"http://www.djw.org/product/palm/multilink/bfd-cygwin.zip" data-=
+ss1673028281=3D"1">here</a>
+      </li>
+      <li>
+	libbfd.a (m68k-palmos binutils) for Linux 2.4.2-2 is
+	<a href=3D"http://www.djw.org/product/palm/multilink/libbfd-Linux-2.4.2-2-=
+i586.tgz" data-ss1673028281=3D"1">here</a>
+      </li>
+
+    </ul>
+    <p>
+      Archives:
+    </p>
+    <ul>
+      <li>
+	The source (multilink.tgz) version 0.2.8 is
+	<a href=3D"http://www.djw.org/product/palm/multilink/multilink0208.tgz" da=
+ta-ss1673028281=3D"1">here</a>.
+      </li>
+    </ul>
+    <a name=3D"donation" data-ss1673028281=3D"1"></a>
+    <h2>Donation</h2>
+    <p>
+      If you download and use multilink, please <a href=3D"http://www.djw.o=
+rg/marathon/index.html" data-ss1673028281=3D"1">support me</a> in
+      my efforts to raise money to fight AIDS while running in
+      the Honolulu Marathon. Click <a href=3D"http://www.djw.org/marathon/i=
+ndex.html" data-ss1673028281=3D"1">here</a>.
+    </p>
+    <a name=3D"libbfd" data-ss1673028281=3D"1"></a>
+    <h2>Libbfd</h2>
+    <p>
+      Having trouble getting multilink to build correctly? It's
+      probably the version of libbfd.a or bfd.h that you are
+      using. Try <a href=3D"http://www.djw.org/product/palm/multilink/libbf=
+d.html" data-ss1673028281=3D"1">this</a>.
+    </p>
+    <a name=3D"thanks" data-ss1673028281=3D"1"></a>
+    <h3>Thanks</h3>
+    <p>
+      Many thanks to the authors of build-prc (Dionne &amp;
+      Associates, The Silver Hammer Group Ltd.), obj-res (Dionne &amp;
+      Associates) and the gcc startup and GLib library code (Kresten
+      Krab Thorup) for sharing their discoveries. Many thanks to the
+      management at AvantGo for allowing multilink to be released=20
+      under the MPL. The -gdb-script option (and
+      load-segments command) was inspired by a clever gdb hack Adam
+      Dingle developed. Thanks to Ashok Nadkarni for the first Cygwin
+      builds. Thanks to John Marshall at Palm for prc-tools 2.0.
+      Thanks to David Sidrane for some good testing and
+      suggestions. Thanks to the entire Palm hacking team at <a href=3D"htt=
+p://www.avantgo.com/" rel=3D"noreferrer" data-ss1673028281=3D"1">AvantGo</a=
+> (especially Eric House
+      and Max Sprauer) for their bugs, good ideas, and patience. This
+      team rocks! Thanks to Max Sprauer for the Cygwin builds.
+    </p>
+    <hr>
+    <p>
+      <i>
+	=A9 1998-2002 <a href=3D"http://www.djw.org/" data-ss1673028281=3D"1">Davi=
+d Williams</a>
+	<a href=3D"mailto:djw@djw.org" data-ss1673028281=3D"1">&lt;djw@djw.org&gt;=
+</a>
+      </i>
+    </p>
+ =20
+
+
+
+
+
+</body></html><!--  LocalWords:  sysAppLaunchFlagSubCall sysAppLaunchCmdNor=
+malLaunch gdb lib
+ --><!--  LocalWords:  rman FtrSet FtrGet apps GLib memcpy segmentmap segme=
+ntsize
+ --><!--  LocalWords:  leavetmp NNNN sNNNN eNNNN finesses ld pre dbNNNN deN=
+NNN libr
+ --><!--  LocalWords:  oNNNN obj basename grc bfd const FoobarGet multilink=
+'s gtscc
+ -->
+------MultipartBoundary--qNWa7l0KGWYOFd05dDbGJOLC6tAiNIueIfdfhizon6----
+Content-Type: text/css
+Content-Transfer-Encoding: quoted-printable
+Content-Location: cid:css-79cf9783-066e-45e3-853b-e963742b8d9f@mhtml.blink
+
+@charset "windows-1252";
+=0A
+------MultipartBoundary--qNWa7l0KGWYOFd05dDbGJOLC6tAiNIueIfdfhizon6----
+Content-Type: text/css
+Content-Transfer-Encoding: quoted-printable
+Content-Location: cid:css-1f9fd297-dc02-4709-8099-ee544067a3ad@mhtml.blink
+
+@charset "windows-1252";
+=0A
+------MultipartBoundary--qNWa7l0KGWYOFd05dDbGJOLC6tAiNIueIfdfhizon6----
+Content-Type: text/css
+Content-Transfer-Encoding: quoted-printable
+Content-Location: cid:css-b9e2927a-fdaa-483a-9fe5-f153478d7092@mhtml.blink
+
+@charset "windows-1252";
+
+.jfk-bubble.gtx-bubble, .captcheck_answer_label > input + img, span#closed_=
+text > img[src^=3D"https://www.gstatic.com/images/branding/googlelogo"], sp=
+an[data-href^=3D"https://www.hcaptcha.com/"] > #icon, #bit-notification-bar=
+-iframe, ::-webkit-calendar-picker-indicator { filter: invert(100%) hue-rot=
+ate(180deg) contrast(90%) !important; }
+------MultipartBoundary--qNWa7l0KGWYOFd05dDbGJOLC6tAiNIueIfdfhizon6----
+Content-Type: text/css
+Content-Transfer-Encoding: quoted-printable
+Content-Location: cid:css-c5e44d75-9430-4e99-998e-eb37edef2b27@mhtml.blink
+
+@charset "windows-1252";
+
+[data-darkreader-inline-bgcolor] { background-color: var(--darkreader-inlin=
+e-bgcolor)  !important; }
+
+[data-darkreader-inline-bgimage] { background-image: var(--darkreader-inlin=
+e-bgimage)  !important; }
+
+[data-darkreader-inline-border] { border-color: var(--darkreader-inline-bor=
+der)  !important; }
+
+[data-darkreader-inline-border-bottom] { border-bottom-color: var(--darkrea=
+der-inline-border-bottom)  !important; }
+
+[data-darkreader-inline-border-left] { border-left-color: var(--darkreader-=
+inline-border-left)  !important; }
+
+[data-darkreader-inline-border-right] { border-right-color: var(--darkreade=
+r-inline-border-right)  !important; }
+
+[data-darkreader-inline-border-top] { border-top-color: var(--darkreader-in=
+line-border-top)  !important; }
+
+[data-darkreader-inline-boxshadow] { box-shadow: var(--darkreader-inline-bo=
+xshadow)  !important; }
+
+[data-darkreader-inline-color] { color: var(--darkreader-inline-color)  !im=
+portant; }
+
+[data-darkreader-inline-fill] { fill: var(--darkreader-inline-fill)  !impor=
+tant; }
+
+[data-darkreader-inline-stroke] { stroke: var(--darkreader-inline-stroke)  =
+!important; }
+
+[data-darkreader-inline-outline] { outline-color: var(--darkreader-inline-o=
+utline)  !important; }
+
+[data-darkreader-inline-stopcolor] { stop-color: var(--darkreader-inline-st=
+opcolor)  !important; }
+------MultipartBoundary--qNWa7l0KGWYOFd05dDbGJOLC6tAiNIueIfdfhizon6----
+Content-Type: text/css
+Content-Transfer-Encoding: quoted-printable
+Content-Location: cid:css-e8b55419-c2f8-421f-a2d7-d57e36e02d99@mhtml.blink
+
+@charset "windows-1252";
+
+:root { --darkreader-neutral-background: #131516; --darkreader-neutral-text=
+: #d8d4cf; --darkreader-selection-background: #004daa; --darkreader-selecti=
+on-text: #e8e6e3; }
+------MultipartBoundary--qNWa7l0KGWYOFd05dDbGJOLC6tAiNIueIfdfhizon6----
+Content-Type: text/css
+Content-Transfer-Encoding: quoted-printable
+Content-Location: cid:css-a9b51fb7-ac63-4858-aa74-767296eb907c@mhtml.blink
+
+@charset "windows-1252";
+
+:root { }
+------MultipartBoundary--qNWa7l0KGWYOFd05dDbGJOLC6tAiNIueIfdfhizon6----
+Content-Type: text/css
+Content-Transfer-Encoding: quoted-printable
+Content-Location: cid:css-e6eb0413-2d82-4972-b585-8a207c14aaac@mhtml.blink
+
+@charset "windows-1252";
+
+html { background-color: rgb(24, 26, 27) !important; }
+
+html { color-scheme: dark !important; }
+
+html, body, input, textarea, select, button, dialog { background-color: rgb=
+(24, 26, 27); }
+
+html, body, input, textarea, select, button { border-color: rgb(115, 107, 9=
+4); color: rgb(232, 230, 227); }
+
+a { color: rgb(51, 145, 255); }
+
+table { border-color: rgb(84, 91, 94); }
+
+::placeholder { color: rgb(178, 171, 161); }
+
+input:-webkit-autofill, textarea:-webkit-autofill, select:-webkit-autofill =
+{ background-color: rgb(64, 68, 0) !important; color: rgb(232, 230, 227) !i=
+mportant; }
+
+::-webkit-scrollbar { background-color: rgb(32, 35, 36); color: rgb(171, 16=
+4, 153); }
+
+::-webkit-scrollbar-thumb { background-color: rgb(69, 74, 77); }
+
+::-webkit-scrollbar-thumb:hover { background-color: rgb(87, 94, 98); }
+
+::-webkit-scrollbar-thumb:active { background-color: rgb(72, 78, 81); }
+
+::-webkit-scrollbar-corner { background-color: rgb(24, 26, 27); }
+
+::selection { background-color: rgb(0, 77, 170) !important; color: rgb(232,=
+ 230, 227) !important; }
+------MultipartBoundary--qNWa7l0KGWYOFd05dDbGJOLC6tAiNIueIfdfhizon6----
+Content-Type: text/css
+Content-Transfer-Encoding: quoted-printable
+Content-Location: cid:css-ae009d80-e18d-40b9-8082-0777bb1394ab@mhtml.blink
+
+@charset "windows-1252";
+
+.vimvixen-hint { background-color: rgb(123, 83, 0) !important; border-color=
+: rgb(216, 176, 19) !important; color: rgb(243, 232, 200) !important; }
+
+::placeholder { opacity: 0.5 !important; }
+
+#edge-translate-panel-body, .MuiTypography-body1, .nfe-quote-text { color: =
+var(--darkreader-neutral-text)  !important; }
+
+gr-main-header { background-color: rgb(15, 58, 72) !important; }
+
+.tou-z65h9k, .tou-mignzq, .tou-1b6i2ox, .tou-lnqlqk { background-color: var=
+(--darkreader-neutral-background)  !important; }
+
+.tou-75mvi { background-color: rgb(3, 32, 41) !important; }
+
+.tou-ta9e87, .tou-1w3fhi0, .tou-1b8t2us, .tou-py7lfi, .tou-1lpmd9d, .tou-1f=
+rrtv8, .tou-17ezmgn { background-color: rgb(10, 10, 10) !important; }
+
+.tou-uknfeu { background-color: rgb(35, 22, 3) !important; }
+
+.tou-6i3zyv { background-color: rgb(25, 87, 108) !important; }
+------MultipartBoundary--qNWa7l0KGWYOFd05dDbGJOLC6tAiNIueIfdfhizon6----
+Content-Type: image/gif
+Content-Transfer-Encoding: base64
+Content-Location: http://www.djw.org/product/palm/multilink/mlcall.gif
+
+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
+
+------MultipartBoundary--qNWa7l0KGWYOFd05dDbGJOLC6tAiNIueIfdfhizon6------
