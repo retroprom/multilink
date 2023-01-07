@@ -29,7 +29,7 @@ start()
     void*         mainPBP;
     UInt16        mainFlags;
     unsigned**    jmptables;
-#ifdef MULTILINK_GLOBALS_A4
+#ifdef MULTILINK_A4_GLOBALS
     UInt32        save_a4 = reg_a4;
 #else /* a5 */
     UInt32        save_a5 = reg_a5;
@@ -47,17 +47,17 @@ start()
 
     if (mainFlags & sysAppLaunchFlagNewGlobals) {
         extern long data_start, bss_start; 
-#ifdef MULTILINK_GLOBALS_A4
+#ifdef MULTILINK_A4_GLOBALS
         asm volatile ("move.l %a5,%a4; sub.l #edata,%a4");
-#endif /*MULTILINK_GLOBALS_A4*/
+#endif /*MULTILINK_A4_GLOBALS*/
         MultilinkRelocateDataRsrc(0, &start, &data_start, &bss_start);
-#ifdef MULTILINK_GLOBALS_A4
+#ifdef MULTILINK_A4_GLOBALS
     } else if ((mainFlags & sysAppLaunchFlagSubCall) != 0) {
         /* for a sub call, reget the a4 globals from a5 */
         asm volatile ("move.l %a5,%a4; sub.l #edata,%a4");
     } else {
         reg_a4 = 0;
-#endif /*MULTILINK_GLOBALS_A4*/
+#endif /*MULTILINK_A4_GLOBALS*/
     }
 
     /* load other segments */
@@ -69,7 +69,7 @@ start()
         
     if ((mainFlags & sysAppLaunchFlagNewGlobals) != 0) {
         MultilinkSegmentJmpTables = jmptables;
-#ifndef MULTILINK_GLOBALS_A4
+#ifndef MULTILINK_A4_GLOBALS
     } else if (!(mainFlags & sysAppLaunchFlagSubCall)) { /* keep sub globals */
         appInfoHook.appInfo = appInfo;
         appInfoHook.jmpTables = jmptables;
@@ -91,7 +91,7 @@ start()
                                 jmptables,
                                 MULTILINK_NJMPTABLES);
  
-#ifdef MULTILINK_GLOBALS_A4
+#ifdef MULTILINK_A4_GLOBALS
     reg_a4 = save_a4;
 #else
     if (reg_a5 == (UInt32)&appInfoHook.appInfo) {
@@ -142,7 +142,7 @@ StartDebug(void)
 {
     UInt32 feature = 0;
 
-#ifdef MULTILINK_GLOBALS_A4
+#ifdef MULTILINK_A4_GLOBALS
     if (!reg_a4)
         return 0;
 #endif
@@ -160,7 +160,7 @@ StartDebug(void)
     }
 #endif
   
-#ifdef MULTILINK_GLOBALS_A4
+#ifdef MULTILINK_A4_GLOBALS
     asm("
     lea data_start(%%a4),%%a1
     move.l %%a1,%%d2

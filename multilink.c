@@ -121,27 +121,26 @@
 #define MULTILINK_VERSION_MINOR ((MULTILINK_VERSION >> 8) & 0xff)
 #define MULTILINK_VERSION_MICRO ((MULTILINK_VERSION) & 0xff)
 
-#ifndef TARGET_LIBDIR
-#define TARGET_LIBDIR "/usr/local/pilot/lib/"
+#ifndef MULTILINK_LIBDIR
+#define MULTILINK_LIBDIR "/usr/local/m68k-palmos/lib/multilib"
 #endif
 
-#ifndef TARGET_LIBFILE_PREFIX
-#define TARGET_LIBFILE_PREFIX  "multilink"
-#endif
-#define LIBFILE_GCRT0   "gcrt0.o"
-#define LIBFILE_CRT0    "crt0.o"
-#define LIBFILE_SLGCRT0 "slgcrt0.o"
-#define LIBFILE_SLCRT0  "slcrt0.o"
-#define LIBFILE_DATA    "data.o"
-#define LIBFILE_LOAD    "load.o"
-#define LIBFILE_GET     "get.o"
-#define LIBFILE_RLOC    "rloc.o"
+/* crt variants */
+#define LIBFILE_CRT0    "crt/crt0.o"
+#define LIBFILE_GCRT0   "crt/gcrt0.o"
+#define LIBFILE_SLCRT0  "crt/slcrt0.o"
+#define LIBFILE_SLGCRT0 "crt/slgcrt0.o"
+/* library files */
+#define LIBFILE_DATA    "lib/multilinkdata.o"
+#define LIBFILE_LOAD    "lib/multlilinkload.o"
+#define LIBFILE_GET     "lib/multilinkget.o"
+#define LIBFILE_RLOC    "lib/multilinkrloc.o"
 
 #define DEFAULT_AMX_PRIORITY 30   /* AMX task priority */
 #define DEFAULT_HEAP_SIZE    4096 /* required heap space */
 #define DEFAULT_STACK_SIZE   4096 /* required stack space */
 
-#ifdef A4_GLOBALS
+#ifdef MULTILINK_A4_GLOBALS
 #define DEFAULT_A4_GLOBALS 1
 #else
 #define DEFAULT_A4_GLOBALS 0
@@ -150,7 +149,7 @@
 #define DEFAULT_AOUT_PREFIX "a"
 #define DEFAULT_AOUT_SUFFIX ".out"
 
-#ifdef RELOCATION_OLD
+#ifdef MULTILINK_RELOCATION_OLD
 #define DEFAULT_RELOCATION_OLD 1
 #else
 #define DEFAULT_RELOCATION_OLD 0
@@ -633,20 +632,18 @@ get_library_filename(char* basename)
     if (libDirVar == NULL) {
         char* env = getenv("MULTILINK_LIBDIR");
         if (env == NULL)
-            env = TARGET_LIBDIR;
+            env = MULTILINK_LIBDIR;
         libDirVar = strdup(env);
     }
 
     lib = MEM_NEWZAP(LibName);
     lib->basename = strdup(basename);
     lib->libname = (char*)MEM_MALLOC(strlen(libDirVar) +
-                                     strlen(TARGET_LIBFILE_PREFIX) +
                                      strlen(basename) +
                                      2);
 
     strcpy(lib->libname, libDirVar);
     strcat(lib->libname, "/");
-    strcat(lib->libname, TARGET_LIBFILE_PREFIX);
     strcat(lib->libname, basename);
 
     list = LibNameListNew(lib);
@@ -3602,7 +3599,7 @@ usage()
             "-fid fid          - FtrID jmptables will be installed using\n"
             "-unused           - dump unused symbols\n"
             "-use-compiler cc  - specify compiler to use "
-            "(default is " DEFAULT_USE_COMPILER ")\n"
+            "(default is " MULTILINK_CC ")\n"
             "-a4-globals       - generate runtime code using a4-rel globals"
 #if (DEFAULT_A4_GLOBALS == 1)
             " (default)"
@@ -3722,7 +3719,7 @@ main(int argc, char** argv)
     char*    gdb_scriptname = NULL;
     LibdirList* userlibdirList = NULL;
     LibdirList* stdlibdirList = NULL;
-    char*       stdlib_path = DEFAULT_STDLIB_PATH;
+    char*       stdlib_path = MULTILINK_STDLIB;
     char*       tmp_env;
 
     memset(&theWorld, 0, sizeof(World));
@@ -3737,7 +3734,7 @@ main(int argc, char** argv)
         return 2;
     }
 
-    palmGcc = DEFAULT_USE_COMPILER;
+    palmGcc = MULTILINK_CC;
     globalsInA4 = DEFAULT_A4_GLOBALS;
     relocateIs05 = DEFAULT_RELOCATION_OLD;
 
