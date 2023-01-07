@@ -75,6 +75,8 @@ typedef struct {
  * These two guys are data in the text segment. They are declared as
  * functions, as that's the only way I know how to force other objects
  * to look for this guy in the text segment.
+ *
+ * TODO FIXME use section attributes
  */
 extern void MultilinkSegmentJmpTable();   /* text: this segment's table */
 extern void MultilinkSegmentNJmpTables(); /* text: number of jmptables  */
