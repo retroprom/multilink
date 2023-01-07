@@ -23,6 +23,11 @@
 #ifndef __MULTILINKRT_H__
 #define __MULTILINKRT_H__
 
+/* Check for PalmOS */
+#ifndef __palmos__
+#error This header is intended for a PalmOS environment.
+#endif
+
 /* System files */
 #ifdef MULTILINK_NEW_HEADERS
 
