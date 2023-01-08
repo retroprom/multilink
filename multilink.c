@@ -130,9 +130,10 @@
 #define LIBFILE_GCRT0   "crt/gcrt0.o"
 #define LIBFILE_SLCRT0  "crt/slcrt0.o"
 #define LIBFILE_SLGCRT0 "crt/slgcrt0.o"
+
 /* library files */
 #define LIBFILE_DATA    "lib/multilinkdata.o"
-#define LIBFILE_LOAD    "lib/multlilinkload.o"
+#define LIBFILE_LOAD    "lib/multilinkload.o"
 #define LIBFILE_GET     "lib/multilinkget.o"
 #define LIBFILE_RLOC    "lib/multilinkrloc.o"
 
