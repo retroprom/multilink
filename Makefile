@@ -143,9 +143,14 @@ clean:
 # Install
 install: all
 	mkdir -p \
-	  $(HOST_BINDIR) $(HOST_DOCDIR) $(HOST_MANDIR) \
-	  $(BUILD_INCDIR) $(BUILD_LIBDIR) \
-	  $(TARGET_INCDIR) $(TARGET_LIBDIR)/multilink
+	  $(HOST_BINDIR) \
+	  $(HOST_DOCDIR) \
+	  $(HOST_MANDIR) \
+	  $(BUILD_INCDIR) \
+	  $(BUILD_LIBDIR) \
+	  $(TARGET_INCDIR) \
+	  $(TARGET_LIBDIR)/multilink/crt \
+	  $(TARGET_LIBDIR)/multilink/lib
 	install -m 755 out/$(HOST)/$(HOST_EXE) $(HOST_BINDIR)/$(HOST_EXE)
 	install -m 644 out/$(HOST)/$(HOST_MAN) $(HOST_MANDIR)/$(HOST_MAN)
 	for o in $(HOST_DOCS) ; do \
@@ -155,10 +160,10 @@ install: all
 	  install -m 644 $$o $(HOST_INCDIR)/`basename $$o` ; \
 	done
 	for o in $(TARGET_CRT_OBJS) ; do \
-	  install -m 644 $$o $(TARGET_LIBDIR)/multilink/`basename $$o` ; \
+	  install -m 644 $$o $(TARGET_LIBDIR)/multilink/crt/`basename $$o` ; \
 	done
 	for o in $(TARGET_LIB_OBJS) ; do \
-	  install -m 644 $$o $(TARGET_LIBDIR)/multilink/`basename $$o` ; \
+	  install -m 644 $$o $(TARGET_LIBDIR)/multilink/lib/`basename $$o` ; \
 	done
 	for o in $(TARGET_HDRS) ; do \
 	  install -m 644 $$o $(TARGET_INCDIR)/`basename $$o` ; \
