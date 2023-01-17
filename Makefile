@@ -145,14 +145,14 @@ install: all
 	mkdir -p \
 	  $(HOST_BINDIR) \
 	  $(HOST_DOCDIR) \
-	  $(HOST_MANDIR) \
+	  $(HOST_MANDIR)/man1 \
 	  $(BUILD_INCDIR) \
 	  $(BUILD_LIBDIR) \
 	  $(TARGET_INCDIR) \
 	  $(TARGET_LIBDIR)/multilink/crt \
 	  $(TARGET_LIBDIR)/multilink/lib
 	install -m 755 out/$(HOST)/$(HOST_EXE) $(HOST_BINDIR)/$(HOST_EXE)
-	install -m 644 out/$(HOST)/$(HOST_MAN) $(HOST_MANDIR)/$(HOST_MAN)
+	install -m 644 out/$(HOST)/$(HOST_MAN) $(HOST_MANDIR)/man1/$(HOST_MAN)
 	for o in $(HOST_DOCS) ; do \
 	  install -m 644 $$o $(HOST_DOCDIR)/`basename $$o` ; \
 	done
